@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_AUTOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUTOS">
+    <Key>
+      <PropertyRef Name="IDauto" />
+    </Key>
+    <Property Name="IDauto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Anio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TipoVehiculo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="ImgRuta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="miEstatus" Type="Int32" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VHESTATUS">
+    <Key>
+      <PropertyRef Name="IDestatus" />
+    </Key>
+    <Property Name="IDestatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DB_AUTOSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUTOS" EntityType="Self.AUTOS" />
+    <EntitySet Name="VHESTATUS" EntityType="Self.VHESTATUS" />
+  </EntityContainer>
+</Schema>

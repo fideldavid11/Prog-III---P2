@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_AUTOSModelStoreContainer" CdmEntityContainer="DB_AUTOSEntities">
+    <EntitySetMapping Name="AUTOS">
+      <EntityTypeMapping TypeName="DB_AUTOSModel.AUTOS">
+        <MappingFragment StoreEntitySet="AUTOS">
+          <ScalarProperty Name="IDauto" ColumnName="IDauto" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="TipoVehiculo" ColumnName="TipoVehiculo" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="ImgRuta" ColumnName="ImgRuta" />
+          <ScalarProperty Name="miEstatus" ColumnName="miEstatus" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VHESTATUS">
+      <EntityTypeMapping TypeName="DB_AUTOSModel.VHESTATUS">
+        <MappingFragment StoreEntitySet="VHESTATUS">
+          <ScalarProperty Name="IDestatus" ColumnName="IDestatus" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

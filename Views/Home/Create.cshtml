@@ -1,0 +1,156 @@
+﻿@model AUTOPROJECT.Models.AUTOS
+@{
+    ViewBag.Title = "Create";
+}
+
+<head>
+    <style>
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+@{
+    var listaAnios = new List<SelectListItem>
+{
+        new SelectListItem { Value = "", Text = "" } // Campo en blanco
+    };
+
+    for (int i = 1950; i <= 2023; i++)
+    {
+        listaAnios.Add(new SelectListItem { Value = i.ToString(), Text = i.ToString() });
+    }
+}
+
+@{
+    var MarcasAutomoviles = new List<SelectListItem>
+{
+        new SelectListItem { Value = "Toyota", Text = "Toyota" },
+        new SelectListItem { Value = "Honda", Text = "Honda" },
+        new SelectListItem { Value = "Ford", Text = "Ford" },
+        new SelectListItem { Value = "Chevrolet", Text = "Chevrolet" },
+        new SelectListItem { Value = "BMW", Text = "BMW" },
+        new SelectListItem { Value = "Mercedes-Benz", Text = "Mercedes-Benz" },
+        new SelectListItem { Value = "Audi", Text = "Audi" },
+        new SelectListItem { Value = "Volkswagen", Text = "Volkswagen" },
+        new SelectListItem { Value = "Nissan", Text = "Nissan" },
+        new SelectListItem { Value = "Hyundai", Text = "Hyundai" },
+        new SelectListItem { Value = "Kia", Text = "Kia" },
+        new SelectListItem { Value = "Subaru", Text = "Subaru" },
+        new SelectListItem { Value = "Mazda", Text = "Mazda" },
+        new SelectListItem { Value = "Jeep", Text = "Jeep" },
+        new SelectListItem { Value = "Volvo", Text = "Volvo" },
+        new SelectListItem { Value = "Tesla", Text = "Tesla" },
+        new SelectListItem { Value = "Land Rover", Text = "Land Rover" },
+        new SelectListItem { Value = "Jaguar", Text = "Jaguar" },
+        new SelectListItem { Value = "Porsche", Text = "Porsche" },
+        new SelectListItem { Value = "Ferrari", Text = "Ferrari" }
+    };
+}
+
+<h2>Crear</h2>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AUTOS</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Marca, new SelectList(MarcasAutomoviles, "Value", "Text"), "-- Seleccione una marca --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Modelo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Anio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Anio, new SelectList(listaAnios, "Value", "Text"), "-- Seleccione un año --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Anio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoVehiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TipoVehiculo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TipoVehiculo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImgRuta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.miEstatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.miEstatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.miEstatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary" style="background-color: blue; color: white;">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

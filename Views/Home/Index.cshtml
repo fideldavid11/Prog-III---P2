@@ -1,0 +1,252 @@
+﻿@model IEnumerable<AUTOPROJECT.Models.AUTOS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-Ky4jUy0Qvadl3fZ9+ehgFYuGq0+Kud7cvxpm57c7zZc0Ly8fhk/uIzCP5XCYpsvW" crossorigin="anonymous">
+    <style>
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .btn-purple {
+            color: white;
+            background-color: purple;
+            border-color: purple;
+        }
+
+        .btn-green {
+            color: white;
+            background-color: green;
+            border-color: green;
+        }
+
+        .btn-red {
+            color: white;
+            background-color: red;
+            border-color: red;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-custom {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+            .btn-custom:hover {
+                background-color: limegreen;
+            }
+
+    </style>
+</head>
+<h2>Index</h2>
+@Html.Raw(TempData["CreateMessage"])
+@Html.Raw(TempData["UpdateMessage"])
+@Html.Raw(TempData["DeleteMessage"])
+
+@{
+    var MarcasAutomoviles = new List<SelectListItem>
+{
+  new SelectListItem { Value = "", Text = "" },
+  new SelectListItem { Value = "Toyota", Text = "Toyota" },
+  new SelectListItem { Value = "Honda", Text = "Honda" },
+  new SelectListItem { Value = "Ford", Text = "Ford" },
+  new SelectListItem { Value = "Chevrolet", Text = "Chevrolet" },
+  new SelectListItem { Value = "BMW", Text = "BMW" },
+  new SelectListItem { Value = "Mercedes-Benz", Text = "Mercedes-Benz" },
+  new SelectListItem { Value = "Audi", Text = "Audi" },
+  new SelectListItem { Value = "Volkswagen", Text = "Volkswagen" },
+  new SelectListItem { Value = "Nissan", Text = "Nissan" },
+  new SelectListItem { Value = "Hyundai", Text = "Hyundai" },
+  new SelectListItem { Value = "Kia", Text = "Kia" },
+  new SelectListItem { Value = "Subaru", Text = "Subaru" },
+  new SelectListItem { Value = "Mazda", Text = "Mazda" },
+  new SelectListItem { Value = "Jeep", Text = "Jeep" },
+  new SelectListItem { Value = "Volvo", Text = "Volvo" },
+  new SelectListItem { Value = "Tesla", Text = "Tesla" },
+  new SelectListItem { Value = "Land Rover", Text = "Land Rover" },
+  new SelectListItem { Value = "Jaguar", Text = "Jaguar" },
+  new SelectListItem { Value = "Porsche", Text = "Porsche" },
+  new SelectListItem { Value = "Ferrari", Text = "Ferrari" }
+};
+
+}
+
+@{
+    var listaAnios = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "", Text = "" }, // Campo en blanco
+    };
+
+    for (int i = 1950; i <= 2023; i++)
+    {
+        listaAnios.Add(new SelectListItem { Value = i.ToString(), Text = i.ToString() });
+    }
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div class="form-horizontal">
+                @Html.Label("Buscar", new { @class = "col-md-2 control-label" })
+                <div class="col-md-6">
+                    @Html.Label("Marca", new { @class = "control-label" })
+                    <br />
+                    @Html.DropDownList("searchTxt", new SelectList(MarcasAutomoviles, "Value", "Text"), new { @class = "form-control", @placeholder = "Busque la marca aquí", @style = "max-width: 100%" })
+                </div>
+                <div class="col-md-6">
+                    @Html.Label("Año", new { @class = "control-label" })
+                    <br />
+                    @Html.DropDownList("searchTxt1", new SelectList(listaAnios, "Value", "Text"), new { @class = "form-control", @placeholder = "Busque el año aquí", @style = "max-width: 25%" })
+                </div>
+                <br />
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </div>
+        }
+
+        <p>
+            <button onclick="location.href='@Url.Action("Create")'" class="btn btn-custom">
+                Crear nuevo
+            </button>
+        </p>
+    </div>
+
+
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modelo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Anio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoVehiculo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImgRuta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.miEstatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Anio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoVehiculo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.ImgRuta)" height="800" width="800" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.miEstatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.IDauto })" class="btn btn-purple">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <br />
+                        <br />
+
+                        <a href="@Url.Action("Details", new { id = item.IDauto })" class="btn btn-green">
+                            <i class="fas fa-info-circle"></i> Detalles
+                        </a>
+                        <br />
+                        <br />
+
+                        <a href="@Url.Action("Delete", new { id = item.IDauto })" class="btn btn-red">
+                            <i class="fas fa-trash-alt"></i> Borrar
+                        </a>
+
+
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+
+</div>
+
+
+
+
+<p>
+    <button onclick="location.href='@Url.Action("Create")'" class="btn btn-custom">
+        Crear nuevo
+    </button>
+</p>
+

@@ -1,0 +1,136 @@
+﻿@model AUTOPROJECT.Models.AUTOS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+    <style>
+        .btn-red {
+            color: white;
+            background-color: red;
+            border: none;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .btn-green {
+            color: white;
+            background-color: green;
+            border: none;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+            .btn-red:hover,
+            .btn-green:hover {
+                opacity: 0.8;
+            }
+
+    </style>
+</head>
+
+<h2>Details</h2>
+
+<div>
+    <h4>AUTOS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDauto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDauto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoVehiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoVehiculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgRuta)
+        </dt>
+
+
+        <dd>
+            <img src="@Url.Content(Session["Image2"].ToString())" height="80" width="80" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.miEstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.miEstatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IDauto }, new { @class = "btn btn-red" }) |
+    @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-green" })
+</p>
